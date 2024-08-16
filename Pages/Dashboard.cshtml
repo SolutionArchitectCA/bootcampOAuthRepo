@@ -1,0 +1,23 @@
+@page
+@model bootcampOAuthRepo.Pages.DashboardModel
+@using Microsoft.AspNetCore.Identity
+
+@{
+    var isAdmin = User.IsInRole("Admin");
+}
+
+<h1>Admin Dashboard</h1>
+
+<p>Welcome to the admin dashboard.</p>
+
+@if (isAdmin)
+{
+    <p>Welcome, Admin! You have full access to the dashboard.</p>
+
+    <div>
+        <h2>Statistics</h2>
+        <p>User Count: @Model.DashboardData.UserCount</p>
+        <p>Orders Today: @Model.DashboardData.OrdersToday</p>
+        <p>Revenue: @Model.DashboardData.Revenue.ToString("C")</p>
+    </div>
+}
